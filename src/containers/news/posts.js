@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {Image, RefreshControl} from 'react-native';
 import {connect} from 'react-redux';
-import {Container, View, List, ListItem, Card, CardItem, Body, Text} from 'native-base';
+import {Container, View, List, ListItem, Card, CardItem, Body, Text, Left, Right} from 'native-base';
 
 import {isEmpty} from 'lodash';
 
@@ -62,24 +62,22 @@ class Posts extends Component {
     renderItem(item) {
         return (
             <ListItem key={item.id} style={styles.listItem}>
-                <Card>
+                <Card style={styles.card}>
                     <CardItem header>
-                        <Body>
-                            <Text>{item.title}</Text>
-                            <Text note>{item.age}</Text>
-                        </Body>
+                        <Left><Text style={{marginLeft: 0}}>{item.title}</Text></Left>
+                        <Body/>
+                        <Right><Text style={{color: '#808080'}}>{item.age}</Text></Right>
                     </CardItem>
 
                     <CardItem cardBody>
                         <Image
                             style={styles.postPic}
-                            defaultSource={require('../../../assets/images/default-post.png')}
                             source={{uri: item.image}} />
                     </CardItem>
 
                     <CardItem footer>
                         <Body>
-                            <Text>{item.excerpt}</Text>
+                            <Text style={{lineHeight: 28}}>{item.excerpt}</Text>
                         </Body>
                     </CardItem>
                 </Card>
@@ -93,16 +91,16 @@ class Posts extends Component {
         return (
             <Container style={styles.container}>
                 <View style={styles.view}>
-                    <OverlayLoader visible={this.state.loading}/>
+                    <OverlayLoader visible={this.state.loading} />
                     <List
                         refreshControl={
                             <RefreshControl
                                 refreshing={this.state.refreshing}
-                                onRefresh={() => this.refreshList()}/>
+                                onRefresh={() => this.refreshList()} />
                         }
                         dataArray={items}
                         renderRow={(item) => this.renderItem(item)}
-                        style={styles.list}/>
+                        style={styles.list} />
                 </View>
             </Container>
         );

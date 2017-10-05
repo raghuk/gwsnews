@@ -5,16 +5,25 @@ const deviceHeight = Dimensions.get('window').height;
 
 
 export default {
-    view: {
-        flex: 1,
+    container: {
         backgroundColor: '#f7f7f7'
     },
+    view: {
+        flex: 1
+    },
     list: {
-        marginTop: 10
+        marginTop: 5
     },
     listItem: {
-        borderColor: '#f7f7f7',
-        paddingVertical: 8
+        paddingTop: 5,
+        paddingBottom: 10,
+        borderColor: '#fff',
+        backgroundColor: '#f7f7f7'
+    },
+    card: {
+        backgroundColor: '#aaa',
+        shadowOpacity: 0.5,
+        elevation: 4
     },
     postPic: {
         alignSelf: 'stretch',

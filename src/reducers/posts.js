@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux';
-import {includes} from 'lodash/collection';
-import {concat} from 'lodash/array';
+import {isArray, concat, includes} from 'lodash';
 
 import * as types from '../actions/actionTypes';
 import {transformPost} from '../resources/transforms';
@@ -8,6 +7,7 @@ import {transformPost} from '../resources/transforms';
 const initialState = {
     byId: {},
     allIds: [],
+    totalCount: 0,
     selectedId: 0,
     error: null
 };
@@ -43,6 +43,17 @@ const allIds = (state = initialState.allIds, action) => {
     }
 };
 
+const totalCount = (state = initialState.totalCount, action) => {
+    switch (action.type) {
+        case types.POSTS_LOAD_SUCCESS: {
+            let data = action.result;
+            return (isArray(data) && data.length > 0) ? parseInt(data[0].count) : state;
+        }
+        default:
+            return state;
+    }
+};
+
 const selectedId = (state = initialState.selectedId, action) => {
     switch (action.type) {
         case types.SET_CURRENT_POST:
@@ -67,6 +78,7 @@ const error = (state = initialState.error, action) => {
 const posts = combineReducers({
     byId,
     allIds,
+    totalCount,
     selectedId,
     error
 });

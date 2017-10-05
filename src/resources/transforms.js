@@ -1,4 +1,4 @@
-import {isEmpty, replace, trim, unescape} from 'lodash';
+import {isEmpty, isString, replace, trim, unescape} from 'lodash';
 
 import getAge from '../utils/getAge';
 
@@ -11,9 +11,9 @@ export function transformPost(post) {
             id: post.id,
             title: trim(post.title.rendered),
             description: trim(unescape(replace(post.content.plaintext, /(?:\\[rn])+/g, ''))),
-            excerpt: trim(post.excerpt.rendered),
+            excerpt: trim(replace(post.excerpt.rendered, /(<([^>]+)>)/ig, '')),
             author: 'Peace News',
-            image: post.image,
+            image: isString(post.image) ? post.image : null,
             slug: post.slug,
             categories: post.categories,
             age: getAge.local(post.date),
