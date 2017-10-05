@@ -8,3 +8,10 @@ export function loadEvents(id) {
         loader: true
     };
 }
+
+export function setCurrentEvent(id) {
+    return {
+        type: types.SET_CURRENT_EVENT,
+        id
+    };
+}

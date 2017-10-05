@@ -21,7 +21,7 @@ const getFlattenedActionResult = (actionResult) => {
 const byId = (state = initialState.byId, action) => {
     switch (action.type) {
         case types.POSTS_LOAD_SUCCESS:
-            return getFlattenedActionResult(action.result.posts).reduce((result, item) => {
+            return getFlattenedActionResult(action.result).reduce((result, item) => {
                 return {
                     ...result,
                     [item.id]: transformPost(item)
@@ -35,7 +35,7 @@ const byId = (state = initialState.byId, action) => {
 const allIds = (state = initialState.allIds, action) => {
     switch (action.type) {
         case types.POSTS_LOAD_SUCCESS:
-            return getFlattenedActionResult(action.result.posts).reduce((result, item) => {
+            return getFlattenedActionResult(action.result).reduce((result, item) => {
                 return !includes(result, item.id) ? concat(result, item.id) : result;
             }, state);
         default:

@@ -1,6 +1,6 @@
 
 export default {
-    container: {
+    view: {
         flex: 1,
         backgroundColor: '#f7f7f7'
     }

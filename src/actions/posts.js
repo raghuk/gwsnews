@@ -8,3 +8,10 @@ export function loadPosts() {
         loader: true
     };
 }
+
+export function setCurrentPost(id) {
+    return {
+        type: types.SET_CURRENT_POST,
+        id
+    };
+}

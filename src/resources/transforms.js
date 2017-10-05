@@ -13,7 +13,8 @@ export function transformPost(post) {
             description: trim(unescape(replace(post.content.plaintext, /(?:\\[rn])+/g, ''))),
             excerpt: trim(post.excerpt.rendered),
             author: 'Peace News',
-            age: getAge.local(parseInt(post.modified)*1000),
+            slug: post.slug,
+            age: getAge.local(post.modified),
             created: post.modified
         }
     }
@@ -27,7 +28,26 @@ export function transformEvent(post) {
     if (!isEmpty(post)) {
         return {
             id: post.id,
-            title: trim(post.title.rendered)
+            title: trim(post.title.rendered),
+            author: 'Peace News',
+            slug: post.slug,
+            age: getAge.local(post.modified),
+            created: post.modified
+        }
+    }
+
+    return result;
+}
+
+export function transformCategory(category) {
+    let result = {};
+
+    if (!isEmpty(category)) {
+        return {
+            id: category.id,
+            name: trim(category.name),
+            slug: category.slug,
+            count: category.count
         }
     }
 
