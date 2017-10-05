@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux';
-import {includes} from 'lodash/collection';
-import {concat} from 'lodash/array';
+import {concat, includes} from 'lodash';
 
 import * as types from '../actions/actionTypes';
 import {transformEvent} from '../resources/transforms';

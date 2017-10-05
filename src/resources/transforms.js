@@ -13,9 +13,11 @@ export function transformPost(post) {
             description: trim(unescape(replace(post.content.plaintext, /(?:\\[rn])+/g, ''))),
             excerpt: trim(post.excerpt.rendered),
             author: 'Peace News',
+            image: post.image,
             slug: post.slug,
-            age: getAge.local(post.modified),
-            created: post.modified
+            categories: post.categories,
+            age: getAge.local(post.date),
+            created: post.date
         }
     }
 
@@ -31,8 +33,8 @@ export function transformEvent(post) {
             title: trim(post.title.rendered),
             author: 'Peace News',
             slug: post.slug,
-            age: getAge.local(post.modified),
-            created: post.modified
+            age: getAge.local(post.date),
+            created: post.date
         }
     }
 

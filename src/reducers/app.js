@@ -1,9 +1,11 @@
 import {combineReducers} from 'redux';
+import {find, isEmpty} from 'lodash';
 
 import * as types from '../actions/actionTypes';
 
 const initialState = {
-    isFetching: 0
+    isFetching: 0,
+    eventTypeId: 0
 };
 
 const isFetching = (state = initialState.isFetching, action) => {
@@ -17,9 +19,21 @@ const isFetching = (state = initialState.isFetching, action) => {
     }
 };
 
+const eventTypeId = (state = initialState.eventTypeId, action) => {
+    switch (action.type) {
+        case types.CATS_LOAD_SUCCESS: {
+            let isFound = find(action.result, ['slug', 'events']);
+            return !isEmpty(isFound) ? isFound.id : state;
+        }
+        default:
+            return state;
+    }
+};
+
 // Combine all sub-reducers into one root reducer
 const app = combineReducers({
-    isFetching
+    isFetching,
+    eventTypeId
 });
 
 export default app;
