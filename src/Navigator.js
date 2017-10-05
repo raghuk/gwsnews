@@ -13,14 +13,26 @@ const NewsTab = StackNavigator({
         screen: Posts,
         path: '/',
         navigationOptions: () => ({
-            title: 'Peace News'
+            title: 'Peace News',
+            headerStyle: {
+                backgroundColor: '#1b6888'
+            },
+            headerTitleStyle: {
+                color: '#fdfdfd'
+            }
         })
     },
     Post: {
         screen: Post,
         path: '/post/:id',
         navigationOptions: ({ navigation }) => ({
-            title: 'News Detail'
+            title: 'News Detail',
+            headerStyle: {
+                backgroundColor: '#1b6888'
+            },
+            headerTitleStyle: {
+                color: '#fdfdfd'
+            }
         })
     }
 });
@@ -30,14 +42,26 @@ const EventsTab = StackNavigator({
         screen: Events,
         path: '/',
         navigationOptions: () => ({
-            title: 'Events'
+            title: 'Events',
+            headerStyle: {
+                backgroundColor: '#175786'
+            },
+            headerTitleStyle: {
+                color: '#fdfdfd'
+            }
         })
     },
     Event: {
         screen: Event,
         path: '/event/:id',
         navigationOptions: ({ navigation }) => ({
-            title: 'Event Detail'
+            title: 'Event Detail',
+            headerStyle: {
+                backgroundColor: '#175786'
+            },
+            headerTitleStyle: {
+                color: '#fdfdfd'
+            }
         })
     }
 });
@@ -47,7 +71,13 @@ const InfoTab = StackNavigator({
         screen: About,
         path: '/',
         navigationOptions: () => ({
-            title: 'About Us'
+            title: 'About Us',
+            headerStyle: {
+                backgroundColor: '#fda541'
+            },
+            headerTitleStyle: {
+                color: '#fdfdfd'
+            }
         })
     }
 });
@@ -56,45 +86,50 @@ const MainTabNavigator = TabNavigator(
     {
         NewsTab: {
             screen: NewsTab,
-            path: '/'
+            path: '/',
+            navigationOptions: {
+                tabBarLabel: 'News',
+                tabBarIcon: ({ tintColor, focused }) => (
+                    <Ionicons
+                        name={focused ? 'ios-paper' : 'ios-paper-outline'}
+                        size={26}
+                        style={{ marginBottom: -3 }}
+                        color={focused ? '#2f95dc' : '#222222'} />
+                )
+            }
         },
         EventsTab: {
             screen: EventsTab,
-            path: '/events'
+            path: '/events',
+            navigationOptions: {
+                tabBarLabel: 'Events',
+                tabBarIcon: ({ tintColor, focused }) => (
+                    <Ionicons
+                        name={focused ? 'ios-megaphone' : 'ios-megaphone-outline'}
+                        size={26}
+                        style={{ marginBottom: -3 }}
+                        color={focused ? '#2f95dc' : '#222222'} />
+                )
+            }
         },
         InfoTab: {
             screen: InfoTab,
-            path: '/info'
+            path: '/info',
+            navigationOptions: {
+                tabBarLabel: 'About',
+                tabBarIcon: ({ tintColor, focused }) => (
+                    <Ionicons
+                        name={focused ? 'ios-information-circle' : 'ios-information-circle-outline'}
+                        size={26}
+                        style={{ marginBottom: -3 }}
+                        color={focused ? '#2f95dc' : '#222222'} />
+                )
+            }
         }
     },
     {
-        navigationOptions: ({ navigation }) => ({
-            tabBarIcon: ({ focused }) => {
-                const { routeName } = navigation.state;
-                let iconName;
-
-                switch (routeName) {
-                    case 'EventsTab':
-                        iconName = `ios-megaphone${focused ? '' : '-outline'}`;
-                        break;
-                    case 'InfoTab':
-                        iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-                        break;
-                    case 'NewsTab':
-                    default:
-                        iconName = `ios-paper${focused ? '' : '-outline'}`;
-                        break;
-                }
-
-                return (
-                    <Ionicons
-                        name={iconName}
-                        size={28}
-                        style={{ marginBottom: -3 }}
-                        color={focused ? '#2f95dc' : '#222222'} />
-                );
-            }
-        }),
+        initialRouteName: 'NewsTab',
+        backBehavior: 'none',
         tabBarComponent: TabBarBottom,
         tabBarPosition: 'bottom',
         animationEnabled: false,
