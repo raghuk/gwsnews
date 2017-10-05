@@ -1,15 +1,9 @@
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+
+import Post from './post';
+import Posts from './posts';
 
 
-class News extends Component {
-    render() {
-        return (
-            <View>
-                <Text>Hi there... we are in news page.</Text>
-            </View>
-        );
-    }
-}
-
-export default News;
+export {
+    Post,
+    Posts
+};

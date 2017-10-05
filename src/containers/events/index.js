@@ -1,15 +1,9 @@
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+
+import Event from './event';
+import Events from './events';
 
 
-class Events extends Component {
-    render() {
-        return (
-            <View>
-                <Text>Hi there... we are in events page.</Text>
-            </View>
-        );
-    }
-}
-
-export default Events;
+export {
+    Event,
+    Events
+};

@@ -15,10 +15,9 @@ export default class AppSdk {
             }
         });
 
-        result.getPosts = () => this._client.get('/posts');
-        result.getPost = (id) => this._client.get('/posts/'+ id);
-
         result.getCategories = () => this._client.get('/categories');
+        result.getPosts = () => this._client.get('/posts');
+        result.getEvents = (id) => this._client.get('/posts?categories='+ id);
 
         return result;
     }

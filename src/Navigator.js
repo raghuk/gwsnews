@@ -1,60 +1,23 @@
 
 import React from 'react';
-import {Button, ScrollView, Text} from 'react-native';
-import {StackNavigator, TabNavigator} from 'react-navigation';
+import {StackNavigator, TabNavigator, TabBarBottom} from 'react-navigation';
 
 import {Ionicons} from '@expo/vector-icons';
 
-const MyNavScreen = ({ navigation, banner }) => (
-    <ScrollView>
-        <Text>{banner}</Text>
-        <Button
-            onPress={() => navigation.navigate('Post', { name: 'Wow News' })}
-            title="Open news detail" />
-        <Button
-            onPress={() => navigation.navigate('Event')}
-            title="Open event detail" />
-        <Button
-            onPress={() => navigation.navigate('EventsTab')}
-            title="Go to events tab" />
-        <Button
-            onPress={() => navigation.navigate('InfoTab')}
-            title="Go to info tab" />
+import About from './containers/about';
+import {Events, Event} from './containers/events';
+import {Posts, Post} from './containers/news';
 
-        <Button onPress={() => navigation.goBack(null)} title="Go back" />
-    </ScrollView>
-);
-
-const PostsScreen = ({ navigation }) => (
-    <MyNavScreen banner="News Screen" navigation={navigation} />
-);
-
-const PostScreen = ({ navigation }) => (
-    <MyNavScreen banner={`${navigation.state.params.name}`} navigation={navigation} />
-);
-
-const EventsScreen = ({ navigation }) => (
-    <MyNavScreen banner="Events Screen" navigation={navigation} />
-);
-
-const EventScreen = ({ navigation }) => (
-    <MyNavScreen banner="Event Detail Screen" navigation={navigation} />
-);
-
-const InfoScreen = ({ navigation }) => (
-    <MyNavScreen banner="Info Screen" navigation={navigation} />
-);
-
-const PostsTab = StackNavigator({
+const NewsTab = StackNavigator({
     Posts: {
-        screen: PostsScreen,
+        screen: Posts,
         path: '/',
-        navigationOptions: {
+        navigationOptions: () => ({
             title: 'Peace News'
-        }
+        })
     },
     Post: {
-        screen: PostScreen,
+        screen: Post,
         path: '/post/:id',
         navigationOptions: ({ navigation }) => ({
             title: 'News Detail'
@@ -64,14 +27,14 @@ const PostsTab = StackNavigator({
 
 const EventsTab = StackNavigator({
     Events: {
-        screen: EventsScreen,
+        screen: Events,
         path: '/',
         navigationOptions: () => ({
             title: 'Events'
         })
     },
     Event: {
-        screen: EventScreen,
+        screen: Event,
         path: '/event/:id',
         navigationOptions: ({ navigation }) => ({
             title: 'Event Detail'
@@ -81,7 +44,7 @@ const EventsTab = StackNavigator({
 
 const InfoTab = StackNavigator({
     Info: {
-        screen: InfoScreen,
+        screen: About,
         path: '/',
         navigationOptions: () => ({
             title: 'About Us'
@@ -91,50 +54,48 @@ const InfoTab = StackNavigator({
 
 const MainTabNavigator = TabNavigator(
     {
-        PostsTab: {
-            screen: PostsTab,
-            path: '/',
-            navigationOptions: {
-                tabBarLabel: 'Home',
-                tabBarIcon: ({ focused }) => (
-                    <Ionicons
-                        name={focused ? 'ios-paper' : 'ios-paper-outline'}
-                        size={28}
-                        style={{ marginBottom: -3 }}
-                        color={focused ? '#2f95dc' : '#cccccc'} />
-                )
-            }
+        NewsTab: {
+            screen: NewsTab,
+            path: '/'
         },
         EventsTab: {
             screen: EventsTab,
-            path: '/events',
-            navigationOptions: {
-                tabBarLabel: 'Events',
-                tabBarIcon: ({ focused }) => (
-                    <Ionicons
-                        name={focused ? 'ios-megaphone' : 'ios-megaphone-outline'}
-                        size={28}
-                        style={{ marginBottom: -3 }}
-                        color={focused ? '#2f95dc' : '#cccccc'} />
-                )
-            }
+            path: '/events'
         },
         InfoTab: {
             screen: InfoTab,
-            path: '/info',
-            navigationOptions: {
-                tabBarLabel: 'About Us',
-                tabBarIcon: ({ focused }) => (
-                    <Ionicons
-                        name={focused ? 'ios-information-circle' : 'ios-information-circle-outline'}
-                        size={28}
-                        style={{ marginBottom: -3 }}
-                        color={focused ? '#2f95dc' : '#cccccc'} />
-                )
-            }
+            path: '/info'
         }
     },
     {
+        navigationOptions: ({ navigation }) => ({
+            tabBarIcon: ({ focused }) => {
+                const { routeName } = navigation.state;
+                let iconName;
+
+                switch (routeName) {
+                    case 'EventsTab':
+                        iconName = `ios-megaphone${focused ? '' : '-outline'}`;
+                        break;
+                    case 'InfoTab':
+                        iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+                        break;
+                    case 'NewsTab':
+                    default:
+                        iconName = `ios-paper${focused ? '' : '-outline'}`;
+                        break;
+                }
+
+                return (
+                    <Ionicons
+                        name={iconName}
+                        size={28}
+                        style={{ marginBottom: -3 }}
+                        color={focused ? '#2f95dc' : '#222222'} />
+                );
+            }
+        }),
+        tabBarComponent: TabBarBottom,
         tabBarPosition: 'bottom',
         animationEnabled: false,
         swipeEnabled: false

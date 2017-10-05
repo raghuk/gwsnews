@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import {Platform, StatusBar, StyleSheet, View} from 'react-native';
+import {Constants} from 'expo';
 
 import MainTabNavigator from './Navigator';
 
@@ -8,7 +9,7 @@ class Setup extends Component {
     render() {
         return (
             <View style={styles.container}>
-                {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+                {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
                 {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
                 <MainTabNavigator />
             </View>
@@ -19,12 +20,11 @@ class Setup extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#ffffff'
+        flex: 1
     },
     statusBarUnderlay: {
-        height: 24,
-        backgroundColor: '#000000'
+        height: Constants.statusBarHeight,
+        backgroundColor: '#929292'
     }
 });
 
