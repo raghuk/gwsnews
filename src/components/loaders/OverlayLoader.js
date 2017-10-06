@@ -13,7 +13,7 @@ class OverlayLoader extends Component {
     }
 
     static defaultProps = {
-        text: 'Loading...',
+        text: '',
         visible: false,
         fadeDuration: 200
     }

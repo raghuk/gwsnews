@@ -19,6 +19,7 @@ class Posts extends Component {
         posts: PropTypes.arrayOf(PropTypes.object),
         isFetching: PropTypes.bool,
         loadPosts: PropTypes.func,
+        loadCategories: PropTypes.func,
         setCurrentPost: PropTypes.func
     }
 
