@@ -1,13 +1,19 @@
 
 export default {
-    view: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+    content: {
         backgroundColor: '#f7f7f7'
     },
-    content: {
-        fontSize: 16,
-        fontFamily: 'Opensans'
+    view: {
+        flex: 1
+    },
+    note: {
+        color: '#2e78b7',
+        fontSize: 13,
+        marginBottom: 10
+    },
+    info: {
+        fontSize: 13,
+        fontFamily: 'Opensans',
+        marginBottom: 20
     }
 };
