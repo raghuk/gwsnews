@@ -44,7 +44,7 @@ const EventsTab = StackNavigator({
         navigationOptions: () => ({
             title: 'Events',
             headerStyle: {
-                backgroundColor: '#175786'
+                backgroundColor: '#1b6888'
             },
             headerTitleStyle: {
                 color: '#fdfdfd'
@@ -57,7 +57,7 @@ const EventsTab = StackNavigator({
         navigationOptions: ({ navigation }) => ({
             title: 'Event Detail',
             headerStyle: {
-                backgroundColor: '#175786'
+                backgroundColor: '#1b6888'
             },
             headerTitleStyle: {
                 color: '#fdfdfd'
@@ -73,7 +73,7 @@ const InfoTab = StackNavigator({
         navigationOptions: () => ({
             title: 'About Us',
             headerStyle: {
-                backgroundColor: '#fda541'
+                backgroundColor: '#1b6888'
             },
             headerTitleStyle: {
                 color: '#fdfdfd'

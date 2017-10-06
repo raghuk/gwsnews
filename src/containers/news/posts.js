@@ -65,7 +65,6 @@ class Posts extends Component {
                 <Card style={styles.card}>
                     <CardItem header>
                         <Left><Text style={{marginLeft: 0}}>{item.title}</Text></Left>
-                        <Body/>
                         <Right><Text style={{color: '#808080'}}>{item.age}</Text></Right>
                     </CardItem>
 
@@ -77,7 +76,7 @@ class Posts extends Component {
 
                     <CardItem footer>
                         <Body>
-                            <Text style={{lineHeight: 28}}>{item.excerpt}</Text>
+                            <Text style={{lineHeight: 20}}>{item.excerpt}</Text>
                         </Body>
                     </CardItem>
                 </Card>

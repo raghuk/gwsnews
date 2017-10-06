@@ -5,7 +5,7 @@ import * as types from '../actions/actionTypes';
 
 const initialState = {
     isFetching: 0,
-    eventTypeId: 0
+    eventTypeId: 12
 };
 
 const isFetching = (state = initialState.isFetching, action) => {

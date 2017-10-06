@@ -7,7 +7,7 @@ import styles from './styles';
 class Events extends Component {
     render() {
         return (
-            <View style={styles.container}>
+            <View style={styles.view}>
                 <Text>Hi there... we are in events page.</Text>
             </View>
         );

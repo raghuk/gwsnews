@@ -7,8 +7,8 @@ import styles from './styles';
 class About extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Hi there... we are in about page.</Text>
+            <View style={styles.view}>
+                <Text style={styles.content}>Hi there... we are in about page.</Text>
             </View>
         );
     }
