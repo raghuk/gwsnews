@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import {PropTypes} from 'prop-types';
 import {Image, RefreshControl} from 'react-native';
 import {connect} from 'react-redux';
 import {Container, View, List, ListItem, Card, CardItem, Body, Text, Left, Right} from 'native-base';

@@ -10,9 +10,6 @@
 var OFF = 0, WARNING = 1, ERROR = 3;
 
 module.exports = {
-    root: true,
-
-    installedESLint: true,
 
     parser: 'babel-eslint',
 
@@ -26,20 +23,11 @@ module.exports = {
 
     extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:promise/recommended'],
 
-    parserOptions: {
-        ecmaVersion: 6,
-        sourceType: 'module',
-        ecmaFeatures: {
-            jsx: true,
-            experimentalObjectRestSpread: true
-        }
-    },
-
     settings: {
-        'import/resolver': {
-            node: {
-                extensions: ['.js', '.json', '.android.js', '.ios.js']
-            }
+        'react': {
+            'createClass': 'createReactClass',
+            'pragma': 'React',
+            'version': '16.0'
         }
     },
 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Container, Content, View, H2, H3, Text} from 'native-base';
-import { WebBrowser } from 'expo';
+import {Container, Content, View, H3, Text} from 'native-base';
+import {WebBrowser} from 'expo';
 
 import styles from './styles';
 
@@ -20,7 +20,8 @@ class About extends Component {
                             http://brahmakumaris.org
                         </Text>
                         <Text style={styles.info}>
-                            Prajapita Brahma Kumaris Ishwariya Vishwa Vidyalaya, (Brahma Kumaris in short) is a unique, spiritual, value-based educational institution. The Vidyalaya and two institutions created by it, namely Rajyoga Education and Research Foundation, and Brahma Kumaris Academy for a Better World, are dedicated to the goal of establishing a value-based society.
+                            Prajapita Brahma Kumaris Ishwariya Vishwa Vidyalaya, (Brahma Kumaris in short) is a unique, spiritual, value-based educational institution.
+                            The Vidyalaya and two institutions created by it, namely Rajyoga Education and Research Foundation, and Brahma Kumaris Academy for a Better World, are dedicated to the goal of establishing a value-based society.
                             We focus on development of human potential, bringing harmony into human relationships and changing the attitudes and outlook of people to promote the spirit of brotherhood, love and co-operation.
                         </Text>
                         <H3>Godlywood Studio</H3>

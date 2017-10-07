@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {StackNavigator, TabNavigator, TabBarBottom} from 'react-navigation';
 
