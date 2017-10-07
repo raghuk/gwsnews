@@ -10,11 +10,14 @@ export function transformPost(post) {
         return {
             id: post.id,
             title: trim(post.title.rendered),
-            description: trim(unescape(replace(post.content.plaintext, /(?:\\[rn])+/g, ''))),
+            description: trim(unescape(replace(post.content.rendered, /(?:\\[rn])+/g, ''))),
             excerpt: trim(replace(post.excerpt.rendered, /(<([^>]+)>)/ig, '')),
-            author: 'Peace News',
             image: isString(post.image) ? post.image : null,
             slug: post.slug,
+            author: {
+                id: 1,
+                name: 'Peace News'
+            },
             categories: post.categories,
             age: getAge.local(post.date),
             created: post.date
@@ -31,8 +34,11 @@ export function transformEvent(post) {
         return {
             id: post.id,
             title: trim(post.title.rendered),
-            author: 'Peace News',
             slug: post.slug,
+            author: {
+                id: 1,
+                name: 'Peace News'
+            },
             age: getAge.local(post.date),
             created: post.date
         }

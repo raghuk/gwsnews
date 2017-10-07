@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
-import {Image, RefreshControl} from 'react-native';
+import {Image, RefreshControl, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {Container, View, List, ListItem, Card, CardItem, Body, Text, Left, Right} from 'native-base';
 
@@ -12,7 +12,7 @@ import {loadCategories} from '../../actions/types';
 import {loadPosts, setCurrentPost} from '../../actions/posts';
 import {getPosts, getIsFetching} from '../../resources/selectors';
 
-import styles from './styles';
+import {styles} from './styles';
 
 
 class Posts extends Component {
@@ -25,7 +25,11 @@ class Posts extends Component {
     }
 
     static defaultProps = {
-        posts: []
+        posts: [],
+        isFetching: false,
+        loadPosts: () => {},
+        loadCategories: () => {},
+        setCurrentPost: () => {}
     }
 
     constructor(props) {
@@ -61,27 +65,32 @@ class Posts extends Component {
         this.props.loadPosts();
     }
 
+    onPostSelect(post) {
+        this.props.setCurrentPost(post.id);
+        this.props.navigation.navigate('Post', {id: post.id, title: post.title});
+    }
+
     renderItem(item) {
         return (
             <ListItem key={item.id} style={styles.listItem}>
-                <Card style={styles.card}>
-                    <CardItem header>
-                        <Left><Text style={{marginLeft: 0}}>{item.title}</Text></Left>
-                        <Right><Text style={{color: '#808080'}}>{item.age}</Text></Right>
-                    </CardItem>
+                <TouchableOpacity onPress={() => this.onPostSelect(item)}>
+                    <Card style={styles.card}>
+                        <CardItem header>
+                            <Left><Text style={{marginLeft: 0}}>{item.title}</Text></Left>
+                            <Right><Text style={{color: '#808080'}}>{item.age}</Text></Right>
+                        </CardItem>
 
-                    <CardItem cardBody>
-                        <Image
-                            style={styles.postPic}
-                            source={{uri: item.image}} />
-                    </CardItem>
+                        <CardItem cardBody>
+                            <Image source={{uri: item.image}} style={styles.postPic} />
+                        </CardItem>
 
-                    <CardItem footer>
-                        <Body>
-                            <Text style={{lineHeight: 20}}>{item.excerpt}</Text>
-                        </Body>
-                    </CardItem>
-                </Card>
+                        <CardItem footer>
+                            <Body>
+                                <Text style={{lineHeight: 20}}>{item.excerpt}</Text>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                </TouchableOpacity>
             </ListItem>
         );
     }

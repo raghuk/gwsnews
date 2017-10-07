@@ -1,12 +1,15 @@
-import {Dimensions} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
 
-export default {
+export const styles = {
     container: {
         backgroundColor: '#f7f7f7'
+    },
+    content: {
+        backgroundColor: '#fff'
     },
     view: {
         flex: 1
@@ -25,6 +28,10 @@ export default {
         shadowOpacity: 0.5,
         elevation: 4
     },
+    item: {
+        paddingLeft: 5,
+        paddingRight: 5
+    },
     postPic: {
         alignSelf: 'stretch',
         height: deviceHeight / 4.5,
@@ -32,3 +39,26 @@ export default {
         position: 'relative'
     }
 };
+
+export const htmlStyles = StyleSheet.create({
+    body: {
+        color: '#333',
+        fontSize: 14,
+        backgroundColor: '#f7f7f7'
+    },
+    p: {
+        color: '#333',
+        marginTop: 0,
+        paddingVertical: 0
+    },
+    ul: {
+        marginTop: 0
+    },
+    li: {
+        color: '#333'
+    },
+    a: {
+        fontWeight: '200',
+        color: '#337ab7'
+    }
+});
