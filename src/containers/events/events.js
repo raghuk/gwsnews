@@ -23,7 +23,10 @@ class Events extends Component {
     }
 
     static defaultProps = {
-        events: []
+        events: [],
+        isFetching: false,
+        loadEvents: () => {},
+        setCurrentEvent: () => {}
     }
 
     constructor(props) {

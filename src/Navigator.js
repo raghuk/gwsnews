@@ -14,10 +14,10 @@ const NewsTab = StackNavigator({
         navigationOptions: () => ({
             title: 'Peace News',
             headerStyle: {
-                backgroundColor: '#1b6888'
+                backgroundColor: '#1b6888', borderWidth: 1, borderBottomColor: '#fff'
             },
             headerTitleStyle: {
-                color: '#fdfdfd'
+                color: '#fdfdfd', fontSize: 18
             }
         })
     },
@@ -26,10 +26,14 @@ const NewsTab = StackNavigator({
         path: '/post/:id',
         navigationOptions: ({ navigation }) => ({
             title: 'News Detail',
+            headerTintColor: '#fff',
             headerStyle: {
-                backgroundColor: '#1b6888'
+                backgroundColor: '#1b6888', borderWidth: 1, borderBottomColor: '#fff'
             },
             headerTitleStyle: {
+                color: '#fdfdfd', fontSize: 18
+            },
+            headerBackTitleStyle: {
                 color: '#fdfdfd'
             }
         })
@@ -43,10 +47,10 @@ const EventsTab = StackNavigator({
         navigationOptions: () => ({
             title: 'Events',
             headerStyle: {
-                backgroundColor: '#1b6888'
+                backgroundColor: '#1b6888', borderWidth: 1, borderBottomColor: '#fff'
             },
             headerTitleStyle: {
-                color: '#fdfdfd'
+                color: '#fdfdfd', fontSize: 18
             }
         })
     },
@@ -54,11 +58,15 @@ const EventsTab = StackNavigator({
         screen: Event,
         path: '/event/:id',
         navigationOptions: ({ navigation }) => ({
-            title: 'Event Detail',
+            title: 'Event Details',
+            headerTintColor: '#fff',
             headerStyle: {
-                backgroundColor: '#1b6888'
+                backgroundColor: '#1b6888', borderWidth: 1, borderBottomColor: '#fff'
             },
             headerTitleStyle: {
+                color: '#fdfdfd', fontSize: 18
+            },
+            headerBackTitleStyle: {
                 color: '#fdfdfd'
             }
         })
@@ -72,10 +80,10 @@ const InfoTab = StackNavigator({
         navigationOptions: () => ({
             title: 'About Us',
             headerStyle: {
-                backgroundColor: '#1b6888'
+                backgroundColor: '#1b6888', borderWidth: 1, borderBottomColor: '#fff'
             },
             headerTitleStyle: {
-                color: '#fdfdfd'
+                color: '#fdfdfd', fontSize: 18
             }
         })
     }

@@ -33,9 +33,9 @@ class About extends Component {
                             It provides additional performances in larger quantities which allow viewers to enjoy spiritual uplifting programs. We assists 20 departments like writing, scripting, production, direction, animation and editing in both national and regional programs.
                             Those spiritual programs leaves an indelible imprint on the mind of the viewers. Motivational and inspirational programs help viewers prioritize the positive values in their lives.
                         </Text>
-                        <H3>Other Info</H3>
+                        <H3>App Info</H3>
                         <Text style={styles.info}>
-                            Visit our website for more info
+                            This app brings you latest news and events done by Brahma Kumaris from across the world. Visit our website for more info
                             <Text style={styles.note} onPress={() => this.handleLinkPress('http://www.gwspeacenews.org')}> www.gwspeacenews.org</Text>
                         </Text>
                         <Text style={styles.info}>
