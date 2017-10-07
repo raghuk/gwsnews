@@ -1,24 +1,37 @@
-import {Dimensions} from 'react-native';
-
-const deviceWidth = Dimensions.get('window').width;
-const deviceHeight = Dimensions.get('window').height;
 
 export default {
-    overlay: {
+    container: {
+        flex: 1,
+        backgroundColor: 'transparent',
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
+    },
+    background: {
         position: 'absolute',
         top: 0,
         bottom: 0,
         left: 0,
         right: 0,
-        flex: 1,
-        width: deviceWidth,
-        height: deviceHeight,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        backgroundColor: 'rgba(0,0,0,0.3)'
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    text: {
-        color: 'white',
-        marginTop: 40
+    textContainer: {
+        flex: 1,
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute'
+    },
+    textContent: {
+        top: 80,
+        height: 50,
+        fontSize: 20,
+        fontWeight: 'bold'
     }
 };

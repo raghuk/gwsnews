@@ -1,72 +1,104 @@
 import React, {Component} from 'react';
-import {PropTypes} from 'prop-types';
-import {Text, ActivityIndicator, Animated} from 'react-native';
+import PropTypes from 'prop-types';
+import {View, Text, Modal, ActivityIndicator} from 'react-native';
 
 import styles from './styles';
+
+const ANIMATION = ['none', 'slide', 'fade'];
+const SIZES = ['small', 'normal', 'large'];
 
 
 class OverlayLoader extends Component {
 
     static propTypes = {
-        text: PropTypes.string,
         visible: PropTypes.bool,
-        fadeDuration: PropTypes.number
-    }
+        cancelable: PropTypes.bool,
+        textContent: PropTypes.string,
+        animation: PropTypes.oneOf(ANIMATION),
+        color: PropTypes.string,
+        size: PropTypes.oneOf(SIZES),
+        overlayColor: PropTypes.string
+    };
 
     static defaultProps = {
-        text: '',
         visible: false,
-        fadeDuration: 200
-    }
+        cancelable: false,
+        textContent: '',
+        animation: 'fade',
+        color: 'white',
+        size: 'large',
+        overlayColor: 'rgba(0, 0, 0, 0.25)'
+    };
 
     constructor(props) {
         super(props);
 
-        this.show = this.show.bind(this);
-        this.hide = this.hide.bind(this);
-
-        let animatedOpacity = new Animated.Value(props.visible ? 1 : 0);
-
         this.state = {
             visible: this.props.visible,
-            opacity: animatedOpacity
+            textContent: this.props.textContent
+        };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const { visible, textContent } = nextProps;
+        this.setState({visible, textContent});
+    }
+
+    _close() {
+        this.setState({ visible: false });
+    }
+
+    _handleOnRequestClose() {
+        if (this.props.cancelable) {
+            this._close();
         }
     }
 
-    componentWillReceiveProps(props) {
-        if (this.state.visible !== props.visible) {
-            props.visible ? this.show(): this.hide();
-            this.setState({visible: props.visible});
+    _renderDefaultContent() {
+        return (
+            <View style={styles.background}>
+                <ActivityIndicator
+                    color={this.props.color}
+                    size={this.props.size}
+                    style={{ flex: 1 }} />
+                <View style={styles.textContainer}>
+                    <Text style={[styles.textContent, this.props.textStyle]}>
+                        {this.state.textContent}
+                    </Text>
+                </View>
+            </View>
+        );
+    }
+
+    _renderSpinner() {
+        const { visible } = this.state;
+
+        if (!visible) {
+            return null;
         }
-    }
 
-    show() {
-        Animated.timing(this.state.opacity, {
-            toValue: 1,
-            friction: 1,
-            duration: this.props.fadeDuration
-        }).start();
-    }
+        const spinner = (
+            <View
+                style={[styles.container, {backgroundColor: this.props.overlayColor}]}
+                key={`spinner_${Date.now()}`}>
+                {this.props.children ? this.props.children : this._renderDefaultContent()}
+            </View>
+        );
 
-    hide() {
-        Animated.timing(this.state.opacity, {
-            toValue: 0,
-            friction: 1,
-            duration: this.props.fadeDuration
-        }).start();
+        return (
+            <Modal
+                animationType={this.props.animation}
+                onRequestClose={() => this._handleOnRequestClose()}
+                supportedOrientations={['landscape', 'portrait']}
+                transparent
+                visible={visible}>
+                {spinner}
+            </Modal>
+        );
     }
 
     render() {
-        const containerStyle = {
-            opacity: this.state.opacity
-        };
-
-        return (
-            <Animated.View style={[styles.overlay, containerStyle]}>
-                <ActivityIndicator size="large" animating={true} color="white"/>
-                <Text style={styles.text}>{this.props.text}</Text>
-            </Animated.View>
-        );
+        return this._renderSpinner();
     }
 }
 
