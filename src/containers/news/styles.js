@@ -20,6 +20,8 @@ export const styles = {
     listItem: {
         paddingTop: 5,
         paddingBottom: 10,
+        paddingRight: 10,
+        marginLeft: 12,
         borderColor: '#fff',
         backgroundColor: '#f7f7f7'
     },
@@ -31,6 +33,10 @@ export const styles = {
     item: {
         paddingLeft: 5,
         paddingRight: 5
+    },
+    title: {
+        width: deviceWidth / 1.5,
+        marginLeft: 0
     },
     postPic: {
         alignSelf: 'stretch',
@@ -44,6 +50,7 @@ export const htmlStyles = StyleSheet.create({
     body: {
         color: '#333',
         fontSize: 14,
+        lineHeight: 24,
         backgroundColor: '#f7f7f7'
     },
     p: {

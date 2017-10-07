@@ -76,7 +76,7 @@ class Posts extends Component {
                 <TouchableOpacity onPress={() => this.onPostSelect(item)}>
                     <Card style={styles.card}>
                         <CardItem header>
-                            <Left><Text style={{marginLeft: 0}}>{item.title}</Text></Left>
+                            <Left><Text style={styles.title}>{item.title}</Text></Left>
                             <Right><Text style={{color: '#808080'}}>{item.age}</Text></Right>
                         </CardItem>
 

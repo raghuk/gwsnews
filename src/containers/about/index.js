@@ -29,8 +29,8 @@ class About extends Component {
                             http://www.godlywoodstudio.org
                         </Text>
                         <Text style={styles.info}>
-                            It facilitates television programs to revolutionize the impact the impact of the media on the individual and collective consciousness. It produces Talk shows and different spiritual programs in English, Hindi, and other regional languages including Gujarati, Malayalam, Telugu, Punjabi, Kannada, Tamil and Bengali etc.
-                            It provides additional performances in larger quantities which allow viewers to enjoy spiritual uplifting programs. We assists 20 departments like writing, scripting, production, direction, animation and editing in both national and regional programs.
+                            We facilitates television programs to revolutionize the impact the impact of the media on the individual and collective consciousness. We produces Talk shows and different spiritual programs in English, Hindi, and other regional languages including Gujarati, Malayalam, Telugu, Punjabi, Kannada, Tamil and Bengali etc.
+                            We provides additional performances in larger quantities which allow viewers to enjoy spiritual uplifting programs. We assists 20 departments like writing, scripting, production, direction, animation and editing in both national and regional programs.
                             Those spiritual programs leaves an indelible imprint on the mind of the viewers. Motivational and inspirational programs help viewers prioritize the positive values in their lives.
                         </Text>
                         <H3>App Info</H3>
@@ -39,7 +39,7 @@ class About extends Component {
                             <Text style={styles.note} onPress={() => this.handleLinkPress('http://www.gwspeacenews.org')}> www.gwspeacenews.org</Text>
                         </Text>
                         <Text style={styles.info}>
-                            For any queries and improvments of the app, please write to us <Text style={styles.note}> godlywood.it@gmail.com</Text>
+                            For any queries and improvments of the app, please write to us <Text style={styles.note}>godlywood.it@gmail.com</Text>
                         </Text>
                     </View>
                 </Content>

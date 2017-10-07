@@ -41,18 +41,18 @@ class Post extends Component {
                         <HTMLView value={item.description} stylesheet={htmlStyles}/>
                     </CardItem>
 
-                    <CardItem footer style={{marginBottom: 20}}>
+                    <CardItem footer style={{marginBottom: 10}}>
                         <Left>
                             <Button iconLeft transparent dark small>
                                 <Icon name="ios-person"/>
-                                <Text>{item.author.name}</Text>
+                                <Text uppercase={false}>{item.author.name}</Text>
                             </Button>
                         </Left>
 
                         <Right>
                             <Button iconLeft transparent info small>
                                 <Icon name="md-alarm"/>
-                                <Text>{item.age}</Text>
+                                <Text uppercase={false}>{item.age}</Text>
                             </Button>
                         </Right>
                     </CardItem>
